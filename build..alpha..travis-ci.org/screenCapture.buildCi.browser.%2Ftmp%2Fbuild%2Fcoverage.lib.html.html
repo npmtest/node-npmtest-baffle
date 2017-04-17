@@ -1,0 +1,241 @@
+<html lang="en"><head>
+    <title>Code coverage report for node-npmtest-baffle/node_modules/baffle/dist/baffle.min.js</title>
+    <meta charset="utf-8">
+    <style>
+        body, html {
+            margin:0; padding: 0;
+        }
+        body {
+            font-family: Arial, Helvetica;
+            font-size: 10pt;
+        }
+        div.header, div.footer {
+            background: #eee;
+            padding: 1em;
+        }
+        div.header {
+            height: 160px;
+            padding: 0 1em 0 1em;
+            z-index: 100;
+            position: fixed;
+            top: 0;
+            border-bottom: 1px solid #666;
+            width: 100%;
+        }
+        div.footer {
+            border-top: 1px solid #666;
+        }
+        div.body {
+            margin-top: 170px;
+        }
+        div.meta {
+            font-size: 90%;
+            text-align: center;
+        }
+        h1, h2, h3 {
+            font-weight: normal;
+        }
+        h1 {
+            font-size: 12pt;
+        }
+        h2 {
+            font-size: 10pt;
+        }
+        pre {
+            font-family: Menlo, Monaco, Consolas, Courier New, monospace;
+            margin: 0;
+            padding: 0;
+            font-size: 14px;
+            tab-size: 2;
+        }
+
+        div.path { font-size: 110%; }
+        div.path a:link, div.path a:visited { color: #000; }
+        table.coverage { border-collapse: collapse; margin:0; padding: 0 }
+
+        table.coverage td {
+            margin: 0;
+            padding: 0;
+            color: #111;
+            vertical-align: top;
+        }
+        table.coverage td.line-count {
+            width: 50px;
+            text-align: right;
+            padding-right: 5px;
+        }
+        table.coverage td.line-coverage {
+            color: #777 !important;
+            text-align: right;
+            border-left: 1px solid #666;
+            border-right: 1px solid #666;
+        }
+
+        table.coverage td.text {
+        }
+
+        table.coverage td span.cline-any {
+            display: inline-block;
+            padding: 0 5px;
+            width: 40px;
+        }
+        table.coverage td span.cline-neutral {
+            background: #eee;
+        }
+        table.coverage td span.cline-yes {
+            background: #b5d592;
+            color: #999;
+        }
+        table.coverage td span.cline-no {
+            background: #fc8c84;
+        }
+
+        .cstat-yes { color: #111; }
+        .cstat-no { background: #fc8c84; color: #111; }
+        .fstat-no { background: #ffc520; color: #111 !important; }
+        .cbranch-no { background:  yellow !important; color: #111; }
+
+        .cstat-skip { background: #ddd; color: #111; }
+        .fstat-skip { background: #ddd; color: #111 !important; }
+        .cbranch-skip { background: #ddd !important; color: #111; }
+
+        .missing-if-branch {
+            display: inline-block;
+            margin-right: 10px;
+            position: relative;
+            padding: 0 4px;
+            background: black;
+            color: yellow;
+        }
+
+        .skip-if-branch {
+            display: none;
+            margin-right: 10px;
+            position: relative;
+            padding: 0 4px;
+            background: #ccc;
+            color: white;
+        }
+
+        .missing-if-branch .typ, .skip-if-branch .typ {
+            color: inherit !important;
+        }
+
+        .entity, .metric { font-weight: bold; }
+        .metric { display: inline-block; border: 1px solid #333; padding: 0.3em; background: white; }
+        .metric small { font-size: 80%; font-weight: normal; color: #666; }
+
+        div.coverage-summary table { border-collapse: collapse; margin: 3em; font-size: 110%; }
+        div.coverage-summary td, div.coverage-summary table  th { margin: 0; padding: 0.25em 1em; border-top: 1px solid #666; border-bottom: 1px solid #666; }
+        div.coverage-summary th { text-align: left; border: 1px solid #666; background: #eee; font-weight: normal; }
+        div.coverage-summary th.file { border-right: none !important; }
+        div.coverage-summary th.pic { border-left: none !important; text-align: right; }
+        div.coverage-summary th.pct { border-right: none !important; }
+        div.coverage-summary th.abs { border-left: none !important; text-align: right; }
+        div.coverage-summary td.pct { text-align: right; border-left: 1px solid #666; }
+        div.coverage-summary td.abs { text-align: right; font-size: 90%; color: #444; border-right: 1px solid #666; }
+        div.coverage-summary td.file { text-align: right; border-left: 1px solid #666; white-space: nowrap;  }
+        div.coverage-summary td.pic { min-width: 120px !important;  }
+        div.coverage-summary a:link { color: #000; }
+        div.coverage-summary a:visited { color: #333; }
+        div.coverage-summary tfoot td { border-top: 1px solid #666; }
+
+        div.coverage-summary .yui3-datatable-sort-indicator, div.coverage-summary .dummy-sort-indicator {
+            height: 10px;
+            width: 7px;
+            display: inline-block;
+            margin-left: 0.5em;
+        }
+        div.coverage-summary .yui3-datatable-sort-indicator {
+            background: no-repeat scroll 0 0 transparent;
+        }
+        div.coverage-summary .yui3-datatable-sorted .yui3-datatable-sort-indicator {
+            background-position: 0 -20px;
+        }
+        div.coverage-summary .yui3-datatable-sorted-desc .yui3-datatable-sort-indicator {
+            background-position: 0 -10px;
+        }
+
+        .high { background: #b5d592 !important; }
+        .medium { background: #ffe87c !important; }
+        .low { background: #fc8c84 !important; }
+
+        span.cover-fill, span.cover-empty {
+            display:inline-block;
+            border:1px solid #444;
+            background: white;
+            height: 12px;
+        }
+        span.cover-fill {
+            background: #ccc;
+            border-right: 1px solid #444;
+        }
+        span.cover-empty {
+            background: white;
+            border-left: none;
+        }
+        span.cover-full {
+            border-right: none !important;
+        }
+        pre.prettyprint {
+            border: none !important;
+            padding: 0 !important;
+            margin: 0 !important;
+        }
+        .com { color: #999 !important; }
+        .ignore-none { color: #999; font-weight: normal; }
+
+    </style>
+</head>
+<body>
+<div class="header low">
+    <h1 style="font-weight: bold;">
+        <a href="https://github.com/npmtest/node-npmtest-baffle">npmtest-baffle (v0.0.1)</a>
+    </h1>
+    <h1>Code coverage report for <span class="entity">node-npmtest-baffle/node_modules/baffle/dist/baffle.min.js</span></h1>
+    <h2>
+        
+        Statements: <span class="metric">40.2% <small>(41 / 102)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        
+        Branches: <span class="metric">21.18% <small>(18 / 85)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        
+        Functions: <span class="metric">25.93% <small>(14 / 54)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        
+        Lines: <span class="metric">100% <small>(1 / 1)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
+    </h2>
+    <div class="path"><a href="../../../../index.html">All files</a> » <a href="index.html">node-npmtest-baffle/node_modules/baffle/dist/</a> » baffle.min.js</div>
+</div>
+<div class="body">
+<pre><table class="coverage">
+<tbody><tr><td class="line-count">1
+2
+3
+4
+5
+6
+7</td><td class="line-coverage"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/*!
+ * baffle 0.3.6 - A tiny javascript library for obfuscating and revealing text in DOM elements.
+ * Copyright (c) 2016 Cam Wiegert &lt;cam@camwiegert.com&gt; - https://camwiegert.github.io/baffle
+ * License: MIT
+ */
+!function(t,e){"object"==typeof exports&amp;&amp;"object"==typeof module?module.exports=e():<span class="branch-1 cbranch-no" title="branch not covered">"function"==typeof define&amp;&amp;define.amd?define([],e):"object"==typeof exports?exports.baffle=e():t.baffle=e()}</span>(this,function(){return function(t){function e(r){if(n[r])return n[r].exports;var i=n[r]={exports:{},id:r,loaded:!1};return t[r].call(i.exports,i,i.exports,e),i.loaded=!0,i.exports}var n={};return e.m=t,e.c=n,e.p="",e(0)}([function(t,e,n){"use strict";function r(t){return t&amp;&amp;t.__esModule?t:<span class="branch-1 cbranch-no" title="branch not covered">{"default":t}}</span>var i=n(2),o=r(i);t.exports=o["default"]},function(t,e){"use strict";<span class="fstat-no" title="function not covered">function n(t,e){<span class="cstat-no" title="statement not covered"></span>for(var n in e)<span class="cstat-no" title="statement not covered">e.hasOwnProperty(n)&amp;&amp;(t[n]=e[n]);<span class="cstat-no" title="statement not covered">r</span></span>eturn t}<span class="fstat-no" title="function not covered"></span>function r(t,e){<span class="cstat-no" title="statement not covered"></span>return t.split("").map(e).join("")}<span class="fstat-no" title="function not covered"></span>function i(t){<span class="cstat-no" title="statement not covered"></span>return t[Math.floor(Math.random()*t.length)]}<span class="fstat-no" title="function not covered"></span>function o(t,e){<span class="cstat-no" title="statement not covered"></span>for(var n=0,r=t.length;n&lt;r;n++)<span class="cstat-no" title="statement not covered">e(t[n],n)}<span class="fstat-no" title="function not covered"></span></span>function u(t){<span class="cstat-no" title="statement not covered"></span>return t.map(<span class="fstat-no" title="function not covered">function(t,e){<span class="cstat-no" title="statement not covered"></span>return!!t&amp;&amp;e}</span>).filter(<span class="fstat-no" title="function not covered">function(t){<span class="cstat-no" title="statement not covered"></span>return t!==!1}</span>)}<span class="fstat-no" title="function not covered"></span>function s(t){<span class="cstat-no" title="statement not covered"></span>return"string"==typeof t?[].slice.call(document.querySelectorAll(t)):[NodeList,HTMLCollection].some(<span class="fstat-no" title="function not covered">function(e){<span class="cstat-no" title="statement not covered"></span>return t instanceof e}</span>)?[].slice.call(t):t.nodeType?[t]:t}</span>Object.defineProperty(e,"__esModule",{value:!0}),e.extend=n,e.mapString=r,e.sample=i,e.each=o,e.getTruthyIndices=u,e.getElements=s},function(t,e,n){"use strict";function r(t){return t&amp;&amp;t.__esModule?t:<span class="branch-1 cbranch-no" title="branch not covered">{"default":t}}<span class="fstat-no" title="function not covered"></span>function i(t,e){<span class="cstat-no" title="statement not covered"></span>if(!(t instanceof e))<span class="cstat-no" title="statement not covered">throw new TypeError("Cannot call a class as a function")}</span></span>Object.defineProperty(e,"__esModule",{value:!0});var o=n(1),u=n(3),s=r(u),c={characters:"AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz~!@#$%^&amp;*()-+=[]{}|;:,./&lt;&gt;?",exclude:[" "],speed:50},a=function(){<span class="fstat-no" title="function not covered">function t(e,n){<span class="cstat-no" title="statement not covered"></span>i(this,t),this.options=(0,o.extend)(Object.create(c),n),this.elements=(0,o.getElements)(e).map(s["default"]),this.running=!1}</span>return t.prototype.once=<span class="fstat-no" title="function not covered">function(){<span class="cstat-no" title="statement not covered"></span>var t=this;<span class="cstat-no" title="statement not covered">r</span>eturn(0,o.each)(this.elements,<span class="fstat-no" title="function not covered">function(e){<span class="cstat-no" title="statement not covered"></span>return e.write(t.options.characters,t.options.exclude)}</span>),this.running=!0,this}</span>,t.prototype.start=<span class="fstat-no" title="function not covered">function(){<span class="cstat-no" title="statement not covered"></span>var t=this;<span class="cstat-no" title="statement not covered">r</span>eturn clearInterval(this.interval),(0,o.each)(this.elements,<span class="fstat-no" title="function not covered">function(t){<span class="cstat-no" title="statement not covered"></span>return t.init()}</span>),this.interval=setInterval(<span class="fstat-no" title="function not covered">function(){<span class="cstat-no" title="statement not covered"></span>return t.once()}</span>,this.options.speed),this.running=!0,this}</span>,t.prototype.stop=<span class="fstat-no" title="function not covered">function(){<span class="cstat-no" title="statement not covered"></span>return clearInterval(this.interval),this.running=!1,this}</span>,t.prototype.set=<span class="fstat-no" title="function not covered">function(t){<span class="cstat-no" title="statement not covered"></span>return(0,o.extend)(this.options,t),this.running&amp;&amp;this.start(),this}</span>,t.prototype.text=<span class="fstat-no" title="function not covered">function(t){<span class="cstat-no" title="statement not covered"></span>var e=this;<span class="cstat-no" title="statement not covered">r</span>eturn(0,o.each)(this.elements,<span class="fstat-no" title="function not covered">function(n){<span class="cstat-no" title="statement not covered"></span>n.text(t(n.value)),e.running||n.write()}</span>),this}</span>,t.prototype.reveal=<span class="fstat-no" title="function not covered">function(){<span class="cstat-no" title="statement not covered"></span>var t=this,e=arguments.length&lt;=0||void 0===arguments[0]?0:arguments[0],n=arguments.length&lt;=1||void 0===arguments[1]?0:arguments[1],r=e/this.options.speed||1,i=<span class="fstat-no" title="function not covered">function(){<span class="cstat-no" title="statement not covered"></span>clearInterval(t.interval),t.running=!0,t.interval=setInterval(<span class="fstat-no" title="function not covered">function(){<span class="cstat-no" title="statement not covered"></span>var e=t.elements.filter(<span class="fstat-no" title="function not covered">function(t){<span class="cstat-no" title="statement not covered"></span>return!t.bitmap.every(<span class="fstat-no" title="function not covered">function(t){<span class="cstat-no" title="statement not covered"></span>return!t}</span>)}</span>);<span class="cstat-no" title="statement not covered">(</span>0,o.each)(e,<span class="fstat-no" title="function not covered">function(e){<span class="cstat-no" title="statement not covered"></span>var n=Math.ceil(e.value.length/r);<span class="cstat-no" title="statement not covered">e</span>.decay(n).write(t.options.characters,t.options.exclude)}</span>),e.length||(t.stop(),(0,o.each)(t.elements,<span class="fstat-no" title="function not covered">function(t){<span class="cstat-no" title="statement not covered"></span>return t.init()}</span>))}</span>,t.options.speed)}</span>;<span class="cstat-no" title="statement not covered">r</span>eturn setTimeout(i,n),this}</span>,t}();e["default"]=<span class="fstat-no" title="function not covered">function(t,e){<span class="cstat-no" title="statement not covered"></span>return new a(t,e)}</span>},function(t,e,n){"use strict";<span class="fstat-no" title="function not covered">function r(t,e){<span class="cstat-no" title="statement not covered"></span>if(!t)<span class="cstat-no" title="statement not covered">throw new ReferenceError("this hasn't been initialised - super() hasn't been called");<span class="cstat-no" title="statement not covered">r</span></span>eturn!e||"object"!=typeof e&amp;&amp;"function"!=typeof e?t:e}</span>function i(t,e){<span class="missing-if-branch" title="if path not taken">I</span>if("function"!=typeof e&amp;&amp;<span class="branch-1 cbranch-no" title="branch not covered">null!==e)<span class="cstat-no" title="statement not covered"></span>throw new TypeError("Super expression must either be null or a function, not "+typeof e);t</span>.prototype=Object.create(e&amp;&amp;e.prototype,{constructor:{value:t,enumerable:!1,writable:!0,configurable:!0}}),e&amp;&amp;(Object.setPrototypeOf?Object.setPrototypeOf(t,e):<span class="branch-1 cbranch-no" title="branch not covered">t.__proto__=e)</span>}<span class="fstat-no" title="function not covered">function o(t,e){<span class="cstat-no" title="statement not covered"></span>if(!(t instanceof e))<span class="cstat-no" title="statement not covered">throw new TypeError("Cannot call a class as a function")}</span></span>Object.defineProperty(e,"__esModule",{value:!0});var u=n(1),s=function(){<span class="fstat-no" title="function not covered">function t(e){<span class="cstat-no" title="statement not covered"></span>o(this,t),this.value=e,this.init()}</span>return t.prototype.init=<span class="fstat-no" title="function not covered">function(){<span class="cstat-no" title="statement not covered"></span>return this.bitmap=this.value.split("").map(<span class="fstat-no" title="function not covered">function(){<span class="cstat-no" title="statement not covered"></span>return 1}</span>),this}</span>,t.prototype.render=<span class="fstat-no" title="function not covered">function(){<span class="cstat-no" title="statement not covered"></span>var t=this,e=arguments.length&lt;=0||void 0===arguments[0]?[]:arguments[0],n=arguments.length&lt;=1||void 0===arguments[1]?[]:arguments[1];<span class="cstat-no" title="statement not covered">r</span>eturn e.length?(0,u.mapString)(this.value,<span class="fstat-no" title="function not covered">function(r,i){<span class="cstat-no" title="statement not covered"></span>return n.indexOf(r)&gt;-1?r:t.bitmap[i]?(0,u.sample)(e):r}</span>):this.value}</span>,t.prototype.decay=<span class="fstat-no" title="function not covered">function(){<span class="cstat-no" title="statement not covered"></span>for(var t=arguments.length&lt;=0||void 0===arguments[0]?1:arguments[0];t--;){<span class="cstat-no" title="statement not covered">var e=(0,u.getTruthyIndices)(this.bitmap);<span class="cstat-no" title="statement not covered">t</span>his.bitmap[(0,u.sample)(e)]=0}<span class="cstat-no" title="statement not covered"></span>r</span>eturn this}</span>,t.prototype.text=<span class="fstat-no" title="function not covered">function(){<span class="cstat-no" title="statement not covered"></span>var t=arguments.length&lt;=0||void 0===arguments[0]?this.value:arguments[0];<span class="cstat-no" title="statement not covered">r</span>eturn this.value=t,this.init(),this}</span>,t}(),c=function(t){<span class="fstat-no" title="function not covered">function e(n){<span class="cstat-no" title="statement not covered"></span>o(this,e);<span class="cstat-no" title="statement not covered">v</span>ar i=r(this,t.call(this,n.textContent));<span class="cstat-no" title="statement not covered">r</span>eturn i.element=n,i}</span>return i(e,t),e.prototype.write=<span class="fstat-no" title="function not covered">function(t,e){<span class="cstat-no" title="statement not covered"></span>return this.element.textContent=this.render(t,e),this}</span>,e}(s);e["default"]=<span class="fstat-no" title="function not covered">function(t){<span class="cstat-no" title="statement not covered"></span>return new c(t)}</span>}])});
+&nbsp;</pre></td></tr>
+</tbody></table></pre>
+</div>
+<div class="footer">
+    <div class="meta">Generated by <a href="https://github.com/kaizhu256/node-utility2" target="_blank">utility2</a> at Mon Apr 17 2017 22:58:43 GMT+0000 (UTC)</div>
+</div>
+
+
+</body></html>
