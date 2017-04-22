@@ -1,4 +1,7 @@
-# test coverage for  [baffle (v0.3.6)](https://camwiegert.github.io/baffle)  [![npm package](https://img.shields.io/npm/v/npmtest-baffle.svg?style=flat-square)](https://www.npmjs.org/package/npmtest-baffle) [![travis-ci.org build-status](https://api.travis-ci.org/npmtest/node-npmtest-baffle.svg)](https://travis-ci.org/npmtest/node-npmtest-baffle)
+# npmtest-baffle
+
+#### basic test-coverage for  [baffle (v0.3.6)](https://camwiegert.github.io/baffle)  [![npm package](https://img.shields.io/npm/v/npmtest-baffle.svg?style=flat-square)](https://www.npmjs.org/package/npmtest-baffle) [![travis-ci.org build-status](https://api.travis-ci.org/npmtest/node-npmtest-baffle.svg)](https://travis-ci.org/npmtest/node-npmtest-baffle)
+
 #### A tiny javascript library for obfuscating and revealing text in DOM elements.
 
 [![NPM](https://nodei.co/npm/baffle.png?downloads=true&downloadRank=true&stars=true)](https://www.npmjs.com/package/baffle)
@@ -96,7 +99,8 @@
         "lint": "eslint src/**/*.js",
         "start": "webpack -wp"
     },
-    "version": "0.3.6"
+    "version": "0.3.6",
+    "bin": {}
 }
 ```
 
